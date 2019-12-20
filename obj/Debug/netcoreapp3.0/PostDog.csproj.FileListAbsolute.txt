@@ -1,0 +1,17 @@
+C:\Dusty_Open\PostDog\bin\Debug\netcoreapp3.0\PostDog.exe
+C:\Dusty_Open\PostDog\bin\Debug\netcoreapp3.0\PostDog.deps.json
+C:\Dusty_Open\PostDog\bin\Debug\netcoreapp3.0\PostDog.runtimeconfig.json
+C:\Dusty_Open\PostDog\bin\Debug\netcoreapp3.0\PostDog.runtimeconfig.dev.json
+C:\Dusty_Open\PostDog\bin\Debug\netcoreapp3.0\PostDog.dll
+C:\Dusty_Open\PostDog\bin\Debug\netcoreapp3.0\PostDog.pdb
+C:\Dusty_Open\PostDog\obj\Debug\netcoreapp3.0\PostDog.csprojAssemblyReference.cache
+C:\Dusty_Open\PostDog\obj\Debug\netcoreapp3.0\MainWindow.g.cs
+C:\Dusty_Open\PostDog\obj\Debug\netcoreapp3.0\App.g.cs
+C:\Dusty_Open\PostDog\obj\Debug\netcoreapp3.0\PostDog_MarkupCompile.cache
+C:\Dusty_Open\PostDog\obj\Debug\netcoreapp3.0\PostDog_MarkupCompile.lref
+C:\Dusty_Open\PostDog\obj\Debug\netcoreapp3.0\MainWindow.baml
+C:\Dusty_Open\PostDog\obj\Debug\netcoreapp3.0\PostDog.g.resources
+C:\Dusty_Open\PostDog\obj\Debug\netcoreapp3.0\PostDog.AssemblyInfoInputs.cache
+C:\Dusty_Open\PostDog\obj\Debug\netcoreapp3.0\PostDog.AssemblyInfo.cs
+C:\Dusty_Open\PostDog\obj\Debug\netcoreapp3.0\PostDog.dll
+C:\Dusty_Open\PostDog\obj\Debug\netcoreapp3.0\PostDog.pdb
