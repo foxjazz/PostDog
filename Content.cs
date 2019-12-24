@@ -9,6 +9,7 @@ using System.Text.Json.Serialization;
 
 namespace PostDog
 {
+    // https://localhost:44390/weatherforecast
     public class Content
     {
         private string appDataFolder;
@@ -26,6 +27,16 @@ namespace PostDog
                 Uris = new List<UriData>();
             }
 
+            for (int i = 0; i < Uris.Count; i++)
+            {
+                if (Uris[i].name is null)
+                {
+                    Uris.RemoveAt(i);
+                    i--;
+                }
+            }
+            string jsonr = JsonSerializer.Serialize(Uris);
+            File.WriteAllText($"{appDataFolder}\\PostDog.json", jsonr);
         }
         public List<UriData> Uris;
 
@@ -43,6 +54,7 @@ namespace PostDog
 
     public class UriData
     {
+        public string name { get; set; }//https://localhost:44390/weatherforecast
         public string Uri { get; set; }
         public string body { get; set; }
         public string type { get; set;  }

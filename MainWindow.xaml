@@ -28,7 +28,8 @@
             <RadioButton Name="RadioButtonGet" GroupName="rbType" Content="GET" HorizontalAlignment="Left" />
             <Button Width="100" HorizontalAlignment="Left" Click="Button_Click" >Add</Button>
             <Button Name="test" Width="100" HorizontalAlignment="Left" Click="Test_OnClick">Hit it!</Button>
-            <ListBox Name="lbUris" SelectionMode="Single" Height="100" Width="600" HorizontalAlignment="Left">
+            <Button Name="testSomthing" Width="100" HorizontalAlignment="Left" Click="testSomthing_Click">Test something</Button>
+            <ListBox Name="lbUris" SelectionMode="Single" Height="100" Width="600" HorizontalAlignment="Left"  SelectionChanged="lbUris_SelectionChanged">
                 
             </ListBox> 
             

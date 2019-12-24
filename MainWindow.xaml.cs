@@ -26,13 +26,20 @@ namespace PostDog
     {
         public Content content;
         public List<string> Uris;
+
         public MainWindow()
         {
             content = new Content();
            
             
             InitializeComponent();
-             lbUris.ItemsSource = content.Uris;
+             lbUris.DataContext = Uris;
+             Uris= new List<string>();
+             foreach (var sdata in content.Uris)
+             {
+                 Uris.Add(sdata.name);
+             }
+             
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -49,7 +56,9 @@ namespace PostDog
             }
             var ld = new Dictionary<string,string>();
             ld.Add("Content-Type", "application/json");
-            content.addUri(new UriData{body = body.Text, Uri=uri.Text, headers = ld, type=typ});
+            content.addUri(new UriData{body = body.Text, Uri=uri.Text, headers = ld, type=typ, name=uriName.Text});
+            Uris.Add(uriName.Text);
+            
 
         }
 
@@ -87,6 +96,25 @@ namespace PostDog
             byte[] bytes = new byte[str.Length * sizeof(char)];
             System.Buffer.BlockCopy(str.ToCharArray(), 0, bytes, 0, bytes.Length);
             return bytes;
+        }
+
+        private void testSomthing_Click(object sender, RoutedEventArgs e)
+        {
+            Uris = new List<string>();
+            lbUris.DataContext = Uris;
+            
+            foreach (var u in content.Uris)
+            {
+                Uris.Add(u.Uri);
+            }
+            
+         }
+
+       
+
+        private void lbUris_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Console.WriteLine(lbUris.SelectedItems[0]);
         }
     }
 }
