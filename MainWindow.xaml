@@ -26,11 +26,16 @@
             <TextBox Name="body" Height="100" Width="853" HorizontalAlignment="Left"></TextBox>
             <RadioButton Name="RadioButtonPost"  GroupName="rbType" Content="POST" HorizontalAlignment="Left" />
             <RadioButton Name="RadioButtonGet" GroupName="rbType" Content="GET" HorizontalAlignment="Left" />
-            <Button Width="100" HorizontalAlignment="Left" Click="Button_Click" >Add</Button>
+            <Button Width="100" HorizontalAlignment="Left" Click="AddUri_Click" >Add</Button>
             <Button Name="test" Width="100" HorizontalAlignment="Left" Click="Test_OnClick">Hit it!</Button>
             <Button Name="testSomthing" Width="100" HorizontalAlignment="Left" Click="testSomthing_Click">Test something</Button>
             <ListBox Name="lbUris" SelectionMode="Single" Height="100" Width="600" HorizontalAlignment="Left"  SelectionChanged="lbUris_SelectionChanged">
-                
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Title}" />
+
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
             </ListBox> 
             
         </StackPanel>

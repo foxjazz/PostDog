@@ -29,7 +29,7 @@ namespace PostDog
 
             for (int i = 0; i < Uris.Count; i++)
             {
-                if (Uris[i].name is null)
+                if (Uris[i].Title is null)
                 {
                     Uris.RemoveAt(i);
                     i--;
@@ -54,7 +54,7 @@ namespace PostDog
 
     public class UriData
     {
-        public string name { get; set; }//https://localhost:44390/weatherforecast
+        public string Title { get; set; }  //https://localhost:44390/weatherforecast
         public string Uri { get; set; }
         public string body { get; set; }
         public string type { get; set;  }

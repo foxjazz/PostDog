@@ -33,11 +33,11 @@ namespace PostDog
            
             
             InitializeComponent();
-             lbUris.DataContext = Uris;
+            lbUris.ItemsSource = content.Uris;
              Uris= new List<string>();
              foreach (var sdata in content.Uris)
              {
-                 Uris.Add(sdata.name);
+                 Uris.Add(sdata.Title);
              }
              
         }
@@ -47,7 +47,7 @@ namespace PostDog
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void AddUri_Click(object sender, RoutedEventArgs e)
         {
             string typ = "POST";
             if (RadioButtonGet.IsChecked == true)
@@ -56,9 +56,10 @@ namespace PostDog
             }
             var ld = new Dictionary<string,string>();
             ld.Add("Content-Type", "application/json");
-            content.addUri(new UriData{body = body.Text, Uri=uri.Text, headers = ld, type=typ, name=uriName.Text});
+            content.addUri(new UriData{body = body.Text, Uri=uri.Text, headers = ld, type=typ, Title=uriName.Text});
             Uris.Add(uriName.Text);
-            
+            lbUris.ItemsSource = content.Uris;
+
 
         }
 
@@ -66,7 +67,7 @@ namespace PostDog
         {
             UriData uriData;
             var wc = new WebClient();
-            if (lbUris.HasItems && lbUris.SelectedIndex > 0)
+            if (lbUris.HasItems && lbUris.SelectedIndex >= 0)
             {
                 uriData = content.Uris[lbUris.SelectedIndex];
             }
@@ -83,10 +84,17 @@ namespace PostDog
                 var response = wc.UploadData(li.Uri, li.type, GetBytes(li.body));
                 tbResult.Text = Encoding.UTF8.GetString(response);
             }
-            else
+            else 
             {
-                string reply = wc.DownloadString(li.Uri);
-                tbResult.Text = reply;
+                try
+                {
+                    string reply = wc.DownloadString(li.Uri);
+                    tbResult.Text = reply;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
 
 
@@ -100,21 +108,31 @@ namespace PostDog
 
         private void testSomthing_Click(object sender, RoutedEventArgs e)
         {
-            Uris = new List<string>();
-            lbUris.DataContext = Uris;
-            
-            foreach (var u in content.Uris)
-            {
-                Uris.Add(u.Uri);
-            }
-            
-         }
+            //Uris = new List<string>();
+            //lbUris.DataContext = Uris;
+
+           
+
+
+
+        }
 
        
 
         private void lbUris_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Console.WriteLine(lbUris.SelectedItems[0]);
+            var data = (UriData) lbUris.SelectedItems[0];
+            uri.Text = data.Uri;
+            uriName.Text = data.Title;
+            if (data.type == "POST")
+                RadioButtonPost.IsChecked = true;
+            else
+            {
+                RadioButtonGet.IsChecked = true;
+            }
+
+            body.Text = data.body;
         }
     }
 }
